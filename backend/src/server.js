@@ -17,9 +17,35 @@ const PORT = process.env.PORT || 5000;
 
 // 3. Global Middleware
 app.use(helmet());
+// backend/src/server.js — replace the cors() call
+
 app.use(cors({
-  origin: process.env.CLIENT_URL || "*",
+  // Allow Railway wildcard OR your specific Vercel URL
+  origin: (origin, callback) => {
+    // Allow requests with no origin (curl, Postman, server-to-server)
+    if (!origin) return callback(null, true);
+
+    const allowed = [
+      process.env.CLIENT_URL,           // e.g. https://ttm.vercel.app
+      /\.vercel\.app$/,                 // any Vercel preview URL
+      /\.up\.railway\.app$/,            // any Railway URL
+      "http://localhost:5173",          // local dev
+      "http://localhost:3000",
+    ].filter(Boolean);
+
+    const isAllowed = allowed.some((pattern) =>
+      pattern instanceof RegExp ? pattern.test(origin) : pattern === origin
+    );
+
+    if (isAllowed) {
+      callback(null, true);
+    } else {
+      callback(new Error(`CORS: origin ${origin} not allowed`));
+    }
+  },
   credentials: true,
+  methods: ["GET", "POST", "PATCH", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
 }));
 app.use(morgan("dev"));
 app.use(express.json());
