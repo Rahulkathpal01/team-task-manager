@@ -5,10 +5,10 @@ const AuthContext = createContext(null);
 
 export const AuthProvider = ({ children }) => {
   const [user,  setUser]  = useState(() => {
-    try { return JSON.parse(localStorage.getItem("ttm_user")); }
+    try { return JSON.parse(sessionStorage.getItem("ttm_user")); }
     catch { return null; }
   });
-  const [token, setToken] = useState(() => localStorage.getItem("ttm_token"));
+  const [token, setToken] = useState(() => sessionStorage.getItem("ttm_token"));
 
   const navigate = useNavigate();
 
@@ -19,8 +19,8 @@ export const AuthProvider = ({ children }) => {
   const login = useCallback((userData, jwt) => {
     setUser(userData);
     setToken(jwt);
-    localStorage.setItem("ttm_user",  JSON.stringify(userData));
-    localStorage.setItem("ttm_token", jwt);
+    sessionStorage.setItem("ttm_user",  JSON.stringify(userData));
+    sessionStorage.setItem("ttm_token", jwt);
     // ✅ Always navigate to dashboard after login
     navigate("/dashboard", { replace: true });
   }, [navigate]);
@@ -28,8 +28,8 @@ export const AuthProvider = ({ children }) => {
   const logout = useCallback(() => {
     setUser(null);
     setToken(null);
-    localStorage.removeItem("ttm_user");
-    localStorage.removeItem("ttm_token");
+    sessionStorage.removeItem("ttm_user");
+    sessionStorage.removeItem("ttm_token");
     navigate("/login", { replace: true });
   }, [navigate]);
 
