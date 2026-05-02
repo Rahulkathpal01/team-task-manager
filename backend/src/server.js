@@ -33,7 +33,7 @@ const cors = require("cors");
 const helmet = require("helmet");
 const morgan = require("morgan");
 
-const authRoutes = require("./routes/auth.routes");
+
 const errorHandler = require("./middleware/error.middleware");
 
 const app = express();
