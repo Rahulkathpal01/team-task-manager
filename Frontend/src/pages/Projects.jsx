@@ -6,7 +6,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 import { Plus, Search, Loader2 } from "lucide-react";
-import Layout             from "../components/Layout";
+import Layout             from "../components/layout";
 import ProjectCard        from "../components/ProjectCard";
 import CreateProjectModal from "../components/CreateProjectModal";
 import { useAuth }        from "../context/AuthContext";
