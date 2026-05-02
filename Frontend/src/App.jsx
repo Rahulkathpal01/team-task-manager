@@ -12,8 +12,8 @@
 
 import { Routes, Route, Navigate } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
-import ProtectedRoute from "./components/ProtectedRoute";
-import PublicRoute    from "./components/PublicRoute";
+
+
 
 // Pages (lazy-loaded for performance)
 import { lazy, Suspense } from "react";
@@ -37,18 +37,14 @@ const App = () => (
         {/* Root redirect */}
         <Route path="/" element={<Navigate to="/dashboard" replace />} />
 
-        {/* Public routes — bounce logged-in users to dashboard */}
-        <Route element={<PublicRoute />}>
-          <Route path="/login"    element={<Login />} />
-          <Route path="/register" element={<Register />} />
-        </Route>
+       {/* Public routes — accessible to everyone for now */}
+<Route path="/login"    element={<Login />} />
+<Route path="/register" element={<Register />} />
 
-        {/* Protected routes — require valid JWT */}
-        <Route element={<ProtectedRoute />}>
-          <Route path="/dashboard"       element={<Dashboard />} />
-          <Route path="/projects"        element={<Projects />} />
-          <Route path="/projects/:id"    element={<ProjectDetail />} />
-        </Route>
+        {/* Protected routes — accessible directly for now */}
+<Route path="/dashboard"    element={<Dashboard />} />
+<Route path="/projects"     element={<Projects />} />
+<Route path="/projects/:id" element={<ProjectDetail />} />
 
         {/* Fallback */}
         <Route path="*" element={<Navigate to="/dashboard" replace />} />
