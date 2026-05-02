@@ -1,6 +1,6 @@
 /**
  * App.jsx — Root router
- *
+ *                     
  * Route tree:
  *   /              → redirect to /dashboard
  *   /login         → Login page (public only)
