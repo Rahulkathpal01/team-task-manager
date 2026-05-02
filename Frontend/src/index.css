@@ -47,7 +47,7 @@
            hover:border-amber hover:text-amber
            transition-all duration-150;
   }
-
+/* fix */
   /* Card surface */
   .card {
     @apply bg-surface border border-border rounded-lg;
