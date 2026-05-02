@@ -1,0 +1,21 @@
+# Railway config for the Express + Prisma backend service.
+# Railway reads this file automatically when the service root is /backend.
+
+[build]
+# Run prisma generate so the client is available before the server starts.
+# Then compile nothing (it's plain JS) — just install prod deps.
+builder = "NIXPACKS"
+buildCommand = "npm ci && npx prisma generate"
+
+[deploy]
+# Run pending migrations, then start the server.
+# `migrate deploy` is the production-safe command (never resets data).
+startCommand = "npx prisma migrate deploy && node src/server.js"
+restartPolicyType = "ON_FAILURE"
+restartPolicyMaxRetries = 3
+
+[deploy.healthcheck]
+# Railway will poll this endpoint to confirm the service is up.
+# This matches the /health route we defined in server.js.
+httpPath = "/health"
+timeoutSeconds = 30
