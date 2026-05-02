@@ -18,7 +18,7 @@ const api = axios.create({
 // ── Request interceptor — attach JWT ────────────────────────────
 api.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem("ttm_token");
+    const token = sessionStorage.getItem("ttm_token");
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
@@ -33,8 +33,8 @@ api.interceptors.response.use(
   (error) => {
     if (error.response?.status === 401) {
       // Token expired or invalid — clear storage and reload to /login
-      localStorage.removeItem("ttm_token");
-      localStorage.removeItem("ttm_user");
+      sessionStorage.removeItem("ttm_token");
+      sessionStorage.removeItem("ttm_user");
       // Use location.replace so the browser history is cleared
       window.location.replace("/login");
     }
