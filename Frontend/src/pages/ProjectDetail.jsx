@@ -8,7 +8,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { useParams, Link } from "react-router-dom";
 import { ArrowLeft, Plus, Loader2, FolderKanban } from "lucide-react";
-import Layout           from "../components/Layout";
+import Layout           from "../components/layout";
 import TaskTable        from "../components/TaskTable";
 import CreateTaskModal  from "../components/CreateTaskModal";
 import StatusBadge      from "../components/StatusBadge";
