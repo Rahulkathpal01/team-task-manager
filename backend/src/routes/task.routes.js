@@ -19,7 +19,7 @@ const {
   getTaskById,
   updateTask,
   deleteTask,
-} = require("../controllers/task.controller");
+} = require("../Controllers/task.controller");
 const { protect, restrictTo } = require("../middleware/auth.middleware");
 
 // mergeParams lets us read :projectId defined in project.routes.js
