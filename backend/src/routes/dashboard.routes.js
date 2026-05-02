@@ -4,7 +4,7 @@
  */
 
 const { Router } = require("express");
-const { getDashboardMetrics } = require("../controllers/dashboard.controller");
+const { getDashboardMetrics } = require("../Controllers/dashboard.controller");
 const { protect } = require("../middleware/auth.middleware");
 
 const router = Router();
