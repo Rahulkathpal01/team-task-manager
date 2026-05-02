@@ -15,7 +15,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { Plus, RefreshCw, Loader2, AlertCircle } from "lucide-react";
 
-import Layout            from "../components/Layout";
+import Layout            from "../components/layout";
 import DashboardMetrics  from "../components/DashboardMetrics";
 import ProjectCard       from "../components/ProjectCard";
 import TaskTable         from "../components/TaskTable";
