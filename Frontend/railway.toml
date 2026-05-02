@@ -1,0 +1,15 @@
+# Railway config for the Vite + React frontend service.
+# Railway reads this file when the service root is /Frontend.
+
+[build]
+builder = "NIXPACKS"
+# Vite needs VITE_API_URL available at BUILD TIME to bake it into the bundle.
+# Railway injects env vars before running this command, so it works correctly.
+buildCommand = "npm ci && npm run build"
+
+[deploy]
+# Serve the compiled /dist folder with a lightweight static file server.
+# `serve` is a zero-config static server — install it as a dev dependency (step below).
+startCommand = "npx serve dist --listen 3000 --single"
+restartPolicyType = "ON_FAILURE"
+restartPolicyMaxRetries = 3
