@@ -5,7 +5,7 @@
 # Run prisma generate so the client is available before the server starts.
 # Then compile nothing (it's plain JS) — just install prod deps.
 builder = "NIXPACKS"
-buildCommand = "npm ci && npx prisma generate"
+buildCommand = "npm install && npx prisma generate"
 
 [deploy]
 # Run pending migrations, then start the server.
