@@ -19,7 +19,7 @@ const {
   getProjectById,
   updateProject,
   deleteProject,
-} = require("../controllers/project.controller");
+} = require("../Controllers/project.controller");
 const { protect, restrictTo } = require("../middleware/auth.middleware");
 
 const router = Router();
