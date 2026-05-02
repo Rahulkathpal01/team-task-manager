@@ -19,7 +19,7 @@ import { AuthProvider } from "./context/AuthContext";
 import { lazy, Suspense } from "react";
 
 const Login     = lazy(() => import("./pages/Login"));
-const Register  = lazy(() => import("./pages/Register"));
+const Register  = lazy(() => import("./pages/register"));
 const Dashboard = lazy(() => import("./pages/Dashboard"));
 const Projects  = lazy(() => import("./pages/Projects"));
 const ProjectDetail = lazy(() => import("./pages/ProjectDetail"));
