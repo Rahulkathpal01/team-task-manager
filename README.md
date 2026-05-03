@@ -3,7 +3,7 @@
 A full-stack team productivity application built with Node.js, React, and PostgreSQL. It supports role-based access control, project management, task assignment, and a real-time dashboard. The application is deployed on Railway (backend + database) and Vercel (frontend).
 
 Live Demo:  
-https://team-task-manager-gn4r-rcdckli3h-rahulkathpal01s-projects.vercel.app
+https://team-task-manager-gn4r-jcf1v960q-rahulkathpal01s-projects.vercel.app/dashboard
 
 ---
 
